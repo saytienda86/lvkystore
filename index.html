@@ -1,83 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>lvkystore - Menú Lateral Interactivo</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>lvkystore - Tienda de productos virales</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .grid-cols-custom {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
+    .sidebar {
+      min-width: 200px;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100 font-sans">
 
+  <!-- HEADER -->
+  <div class="bg-white py-4 px-6 flex items-center justify-between">
+    <div class="flex items-center">
+      <img src="https://i.imgur.com/lhF9eXG.png" alt="lvkystore" class="h-10 mr-2">
+      <h1 class="text-2xl font-bold">lvkystore</h1>
+    </div>
+    <div>
+      <a href="https://instagram.com/lvkvsmg" class="text-gray-700 hover:underline mr-4">@lvkvsmg</a>
+      <a href="https://wa.me/56949795980" class="text-gray-700 hover:underline">WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- LAYOUT PRINCIPAL -->
   <div class="flex">
     <!-- MENÚ LATERAL -->
-    <aside class="w-64 h-screen bg-pink-600 text-white p-6 sticky top-0">
-      <h1 class="text-2xl font-bold mb-6">lvkystore</h1>
-      <nav class="space-y-4">
-        <button onclick="filterCategory('all')" class="block w-full text-left hover:underline">Todos los productos</button>
-        <button onclick="filterCategory('belleza')" class="block w-full text-left hover:underline">🧴 Belleza</button>
-        <button onclick="filterCategory('gamer')" class="block w-full text-left hover:underline">🎮 Gamer</button>
-        <button onclick="filterCategory('dulces')" class="block w-full text-left hover:underline">🌶 Dulces Mexicanos</button>
-      </nav>
-      <div class="mt-10">
-        <p class="text-sm">Instagram: <a href="https://instagram.com/lvkvsmg" class="underline">@lvkvsmg</a></p>
-        <p class="text-sm">WhatsApp: <a href="https://wa.me/56949795980" class="underline">+56 9 4979 5980</a></p>
-      </div>
+    <aside class="sidebar bg-pink-600 text-white p-6 sticky top-0">
+      <h2 class="font-bold mb-4">Categorías</h2>
+      <ul class="space-y-2">
+        <li><button onclick="filter('all')" class="hover:underline">Todos los productos</button></li>
+        <li><button onclick="filter('belleza')" class="hover:underline">🧴 Belleza</button></li>
+        <li><button onclick="filter('gamer')" class="hover:underline">🎮 Gamer</button></li>
+        <li><button onclick="filter('dulces')" class="hover:underline">🌶 Dulces Mexicanos</button></li>
+      </ul>
     </aside>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="flex-1 p-6">
-      <h2 class="text-2xl font-bold mb-4">Catálogo de Productos</h2>
-      <div id="productos" class="grid-cols-custom">
-        
-        <!-- Producto de Belleza -->
-        <div class="producto belleza bg-white border rounded-xl shadow p-4">
-          <img src="https://m.media-amazon.com/images/I/71UZb3wIHRL.AC_SL1500.jpg" alt="Set Maquillaje Pro" class="w-full h-48 object-cover rounded">
-          <h3 class="text-lg font-bold mt-2">Set Maquillaje Profesional</h3>
-          <p class="text-sm text-gray-600">Incluye brochas, sombras y labiales. Ideal para uso diario.</p>
-          <p class="font-bold text-pink-600 mt-2">12.990 CLP</p>
+    <main class="p-6 flex-1">
+      <div class="bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 p-4 rounded animate-pulse text-center">
+        <h3 class="text-xl font-semibold">¡Ofertas semanales! Envío calculado según distancia</h3>
+      </div>
+
+      <!-- PRODUCTOS -->
+      <div id="products" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Ejemplo de Producto -->
+        <div class="product-card belleza bg-white p-4 rounded-lg border shadow-sm">
+          <img src="https://m.media-amazon.com/images/I/71UZb3wIHRL.AC_SL1500.jpg" alt="Set Maquillaje Pro" class="w-full h-40 object-cover rounded">
+          <h4 class="mt-2 font-semibold">Set Maquillaje Profesional</h4>
+          <p class="text-sm text-gray-600">Kit cosmético completo con brochas y sombras.</p>
+          <p class="mt-1 text-lg font-bold">CLP 12.990</p>
+          <button class="mt-2 bg-yellow-400 w-full py-2 rounded">Agregar al carrito</button>
         </div>
 
-        <!-- Producto Gamer -->
-        <div class="producto gamer bg-white border rounded-xl shadow p-4">
-          <img src="https://m.media-amazon.com/images/I/61sLz2hXlNL.AC_SL1500.jpg" alt="Soporte mando PS5" class="w-full h-48 object-cover rounded">
-          <h3 class="text-lg font-bold mt-2">Soporte para Mando PS5</h3>
-          <p class="text-sm text-gray-600">Estación de carga o exposición para control de PlayStation.</p>
-          <p class="font-bold text-pink-600 mt-2">11.990 CLP</p>
-        </div>
-
-        <!-- Producto Dulce Mexicano -->
-        <div class="producto dulces bg-white border rounded-xl shadow p-4">
-          <img src="https://i.pinimg.com/564x/d0/25/ed/d025ed08aa5b7c960441b5032751f3a6.jpg" alt="Tamarindo Picante" class="w-full h-48 object-cover rounded">
-          <h3 class="text-lg font-bold mt-2">Tamarindo Picante</h3>
-          <p class="text-sm text-gray-600">Dulce tradicional mexicano con un toque ácido y picante.</p>
-          <p class="font-bold text-pink-600 mt-2">5.500 CLP</p>
-        </div>
-
-        <!-- Agrega más productos duplicando los bloques anteriores -->
+        <!-- Aquí van los productos, copia el bloque para crear los 60 productos -->
 
       </div>
     </main>
   </div>
 
-  <!-- SCRIPT DE FILTRO -->
+  <!-- SCRIPT PARA FILTROS -->
   <script>
-    function filterCategory(category) {
-      const productos = document.querySelectorAll('.producto');
+    function filter(cat) {
+      const productos = document.querySelectorAll('.product-card');
       productos.forEach(p => {
-        if (category === 'all') {
+        if (cat === 'all') {
           p.style.display = 'block';
         } else {
-          p.style.display = p.classList.contains(category) ? 'block' : 'none';
+          p.style.display = p.classList.contains(cat) ? 'block' : 'none';
         }
       });
     }
   </script>
+
 </body>
 </html>
