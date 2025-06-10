@@ -3,21 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>lvkystore - Tienda de productos virales</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>lvkystore</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <style>
-    .sidebar {
-      min-width: 200px;
-    }
-    .product-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+    .sidebar { min-width: 200px; }
+    .product-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-
-  <!-- HEADER -->
-  <div class="bg-white py-4 px-6 flex items-center justify-between">
+  <div class="bg-white py-4 px-6 flex items-center justify-between shadow">
     <div class="flex items-center">
       <img src="https://i.imgur.com/lhF9eXG.png" alt="lvkystore" class="h-10 mr-2">
       <h1 class="text-2xl font-bold">lvkystore</h1>
@@ -28,55 +22,129 @@
     </div>
   </div>
 
-  <!-- LAYOUT PRINCIPAL -->
   <div class="flex">
-    <!-- MENÚ LATERAL -->
-    <aside class="sidebar bg-pink-600 text-white p-6 sticky top-0">
+    <aside class="sidebar bg-white text-black p-6 sticky top-0">
       <h2 class="font-bold mb-4">Categorías</h2>
-      <ul class="space-y-2">
-        <li><button onclick="filter('all')" class="hover:underline">Todos los productos</button></li>
+      <ul class="space-y-2 text-sm">
+        <li><button onclick="filter('all')" class="hover:underline">🛍 Todos</button></li>
         <li><button onclick="filter('belleza')" class="hover:underline">🧴 Belleza</button></li>
         <li><button onclick="filter('gamer')" class="hover:underline">🎮 Gamer</button></li>
-        <li><button onclick="filter('dulces')" class="hover:underline">🌶 Dulces Mexicanos</button></li>
+        <li><button onclick="filter('dulces')" class="hover:underline">🍬 Dulces Mexicanos</button></li>
       </ul>
+
+      <div class="mt-6">
+        <h2 class="font-bold mb-2">🛒 Carrito</h2>
+        <ul id="cart-items" class="text-sm list-disc ml-4"></ul>
+        <p class="mt-2 font-semibold">Total: <span id="cart-total">0</span> CLP</p>
+      </div>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main class="p-6 flex-1">
       <div class="bg-gradient-to-r from-orange-400 via-yellow-300 to-orange-400 p-4 rounded animate-pulse text-center">
-        <h3 class="text-xl font-semibold">¡Ofertas semanales! Envío calculado según distancia</h3>
+        <h3 class="text-xl font-semibold">¡Explora nuestros productos virales con envío personalizado!</h3>
       </div>
 
-      <!-- PRODUCTOS -->
       <div id="products" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Ejemplo de Producto -->
         <div class="product-card belleza bg-white p-4 rounded-lg border shadow-sm">
-          <img src="https://m.media-amazon.com/images/I/71UZb3wIHRL.AC_SL1500.jpg" alt="Set Maquillaje Pro" class="w-full h-40 object-cover rounded">
-          <h4 class="mt-2 font-semibold">Set Maquillaje Profesional</h4>
-          <p class="text-sm text-gray-600">Kit cosmético completo con brochas y sombras.</p>
-          <p class="mt-1 text-lg font-bold">CLP 12.990</p>
-          <button class="mt-2 bg-yellow-400 w-full py-2 rounded">Agregar al carrito</button>
-        </div>
+  <img src="https://via.placeholder.com/300x200?text=Set+Maquillaje+Pro+1" class="w-full h-40 object-cover" alt="Set Maquillaje Pro #1">
+  <h4 class="mt-2 font-semibold">Set Maquillaje Pro #1</h4>
+  <p class="text-sm text-gray-600">Ganancia: 37.64%</p>
+  <p class="text-sm text-gray-600">Compra: 8050 CLP | Venta: 11080 CLP</p>
+  <p class="text-sm text-gray-600">Por mayor: Sí (x5 o más)</p>
+  <p class="text-sm text-gray-600">Envío: Variable según distancia</p>
+  <a href="https://www.tiktok.com/@beauty/video/11" target="_blank" class="text-blue-600 underline text-sm block mt-1">📹 Ver en TikTok</a>
+  <p class="text-xs text-green-700 mt-1">Proveedor: <a href="https://www.aliexpress.com/item/beauty-product" class="underline" target="_blank">link</a></p>
+  <button onclick="addToCart('Set Maquillaje Pro #1', 11080)" class="mt-2 bg-yellow-400 w-full py-2 rounded text-sm">Agregar al carrito</button>
+</div>
+        <!-- PRODUCTOS GAMER -->
+<div class="product-card gamer bg-white p-4 rounded-lg border shadow-sm">
+  <img src="https://via.placeholder.com/300x200?text=Mouse+Gamer+RGB+Pro+1" class="w-full h-40 object-cover" alt="Mouse Gamer RGB Pro 1">
+  <h4 class="mt-2 font-semibold">Mouse Gamer RGB Pro 1</h4>
+  <p class="text-sm text-gray-600">Ganancia: 30%</p>
+  <p class="text-sm text-gray-600">Compra: 10500 CLP | Venta: 13650 CLP</p>
+  <p class="text-sm text-gray-600">Por mayor: No</p>
+  <p class="text-sm text-gray-600">Envío: 3000 CLP</p>
+  <a href="https://www.tiktok.com/@gaminggear/video/12345" target="_blank" class="text-blue-600 underline text-sm block mt-1">📹 Ver en TikTok</a>
+  <p class="text-xs text-green-700 mt-1">Proveedor: <a href="https://www.aliexpress.com/item/gaming-mouse" class="underline" target="_blank">link</a></p>
+  <button onclick="addToCart('Mouse Gamer RGB Pro 1', 13650)" class="mt-2 bg-yellow-400 w-full py-2 rounded text-sm">Agregar al carrito</button>
+</div>
+        </div> <!-- fin productos -->
 
-        <!-- Aquí van los productos, copia el bloque para crear los 60 productos -->
+    <!-- FORMULARIO DE COMPRA -->
+<section class="mt-10 bg-white p-6 rounded shadow-lg max-w-3xl mx-auto">
+  <h2 class="text-2xl font-bold mb-4 text-gray-800">Formulario de Compra</h2>
+  <form id="checkout-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    
+    <div>
+      <label class="block font-semibold">Método de Pago</label>
+      <select name="pago" class="w-full border p-2 rounded">
+        <option>Tarjeta de Crédito</option>
+        <option>Débito</option>
+        <option>Transferencia Bancaria</option>
+        <option>WebPay</option>
+        <option>MercadoPago</option>
+      </select>
+    </div>
 
-      </div>
+    <div>
+      <label class="block font-semibold">País</label>
+      <input type="text" name="pais" class="w-full border p-2 rounded" placeholder="Ej: Chile" required />
+    </div>
+
+    <div>
+      <label class="block font-semibold">Ciudad</label>
+      <input type="text" name="ciudad" class="w-full border p-2 rounded" required />
+    </div>
+
+    <div>
+      <label class="block font-semibold">Código Postal</label>
+      <input type="text" name="postal" class="w-full border p-2 rounded" required />
+    </div>
+
+    <div class="col-span-2">
+      <label class="block font-semibold">Calle</label>
+      <input type="text" name="calle" class="w-full border p-2 rounded" placeholder="Ej: Av. Siempre Viva 742" required />
+    </div>
+
+    <div>
+      <label class="block font-semibold">Número de Departamento</label>
+      <input type="text" name="depto" class="w-full border p-2 rounded" />
+    </div>
+
+    <div class="col-span-2">
+      <label class="block font-semibold">Comentario Opcional</label>
+      <textarea name="comentario" rows="3" class="w-full border p-2 rounded" placeholder="Detalles adicionales sobre tu pedido..."></textarea>
+    </div>
+
+    <div class="col-span-2 text-center mt-4">
+      <button type="submit" class="bg-green-500 hover:bg-green-600 text-white py-2 px-6 rounded shadow">
+        Confirmar Compra
+      </button>
+    </div>
+  </form>
+</section>
+
     </main>
   </div>
 
-  <!-- SCRIPT PARA FILTROS -->
   <script>
     function filter(cat) {
-      const productos = document.querySelectorAll('.product-card');
-      productos.forEach(p => {
-        if (cat === 'all') {
-          p.style.display = 'block';
-        } else {
-          p.style.display = p.classList.contains(cat) ? 'block' : 'none';
-        }
+      document.querySelectorAll('.product-card').forEach(p => {
+        p.style.display = (cat === 'all' || p.classList.contains(cat)) ? 'block' : 'none';
       });
     }
-  </script>
 
+    const cart = [];
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      const list = document.getElementById('cart-items');
+      const total = document.getElementById('cart-total');
+      const item = document.createElement('li');
+      item.textContent = name + " - " + price + " CLP";
+      list.appendChild(item);
+      const sum = cart.reduce((a, b) => a + b.price, 0);
+      total.textContent = sum.toLocaleString('es-CL');
+    }
+  </script>
 </body>
 </html>
